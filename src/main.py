@@ -146,7 +146,7 @@ def main(page: ft.Page):
             aliya_txt = ft.Container(
                 content=ft.Text(aliya),
                 padding=10,
-                bgcolor=ft.Colors.AMBER_50,
+                bgcolor=ft.Colors.WHITE,
                 border_radius=10
             )
 
@@ -203,7 +203,7 @@ def main(page: ft.Page):
             ft.NavigationBarDestination(icon=ft.Icons.MENU, label="Más"),
         ],
         selected_index=2,
-        indicator_color=ft.Colors.AMBER_100,
+        indicator_color=ft.Colors.AMBER_50,
         on_change=lambda e: update_content(
             e.control.selected_index
         ),  # Cambiar el contenido según la selección
