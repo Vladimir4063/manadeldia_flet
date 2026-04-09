@@ -17,17 +17,17 @@ def main(page: ft.Page):
         data = None
         nonlocal nro_parasha, name_parasha, sign_parasha, info_aliya, aliya
         try:
-            response = requests.get("https://jsonplaceholder.typicode.com/users")
+            response = requests.get("https://manadeldia.vercel.app/api/get/aliya")
             if response.status_code == 200:
                 # print(response.json())
                 print("Datos")
                 data = response.json()
                 # Asignar los datos a las variables
-                nro_parasha = data[0]['id']
-                name_parasha = data[0]['name']
-                sign_parasha = data[0]['username']
-                # info_aliya = f"Aliyá 1, {data['section1']}"
-                # aliya = data['aliya1']
+                nro_parasha = data[0]['nroparasha']
+                name_parasha = data[0]['nameparasha']
+                sign_parasha = data[0]['signparasha']
+                info_aliya = f"Aliyá 1, {data[0]['section1']}"
+                aliya = data[0]['aliya1']
             else:
                 print("Error al obtener datos de la API")
         except Exception as e:
@@ -89,7 +89,7 @@ def main(page: ft.Page):
             )
         elif index == 2:
             title_txt = ft.Container(
-                content=ft.Text("Mana del Día", size=30, weight=ft.FontWeight.W_300),
+                content=ft.Text("", size=30, weight=ft.FontWeight.W_300),
                 # padding=20,
                 # alignment=ft.alignment.center,
                 # bgcolor=ft.Colors.RED,
@@ -150,7 +150,7 @@ def main(page: ft.Page):
                 border_radius=10
             )
 
-            # content.controls.append(title_txt)
+            content.controls.append(title_txt)
             content.controls.append(img_moises)
             content.controls.append(parasha_nro_txt)
             content.controls.append(name_parasha_txt)
@@ -207,12 +207,12 @@ def main(page: ft.Page):
         on_change=lambda e: update_content(
             e.control.selected_index
         ),  # Cambiar el contenido según la selección
-        bgcolor=ft.Colors.AMBER_200,
+        bgcolor=ft.Colors.AMBER_100,
     )
 
     # Start content home view
     update_content(2)
-    page.bgcolor=ft.Colors.AMBER_100 #color page
+    page.bgcolor=ft.Colors.AMBER_50 #color page
     page.add(content)  # Add container
     page.add(nav_bar)  # Add navigation
 
